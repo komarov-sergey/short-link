@@ -3,15 +3,12 @@ package main
 import (
 	"fmt"
 	"net/http"
+	"short-link/internal/hello"
 )
-
-func hello(w http.ResponseWriter, req *http.Request) {
-	fmt.Println("hello")
-}
 
 func main() {
 	router := http.NewServeMux()
-	router.HandleFunc("/hello", hello)
+	hello.NewHelloHandler(router)
 
 	server := http.Server{
 		Addr:    ":7081",
