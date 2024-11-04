@@ -5,10 +5,12 @@ import (
 	"net/http"
 	"short-link/configs"
 	"short-link/internal/auth"
+	"short-link/pkg/db"
 )
 
 func main() {
 	conf := configs.LoadConfig()
+	_ = db.NewDb(conf)
 	router := http.NewServeMux()
 	auth.NewAuthHandler(router, auth.AuthHandlerDeps{Config: conf})
 
