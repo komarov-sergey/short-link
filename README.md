@@ -10,3 +10,5 @@ go get github.com/go-playground/validator/v10
 ```bash
 go run migrations/auto.go
 ```
+
+1
