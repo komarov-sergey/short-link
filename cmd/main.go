@@ -7,6 +7,7 @@ import (
 	"short-link/internal/auth"
 	"short-link/internal/link"
 	"short-link/pkg/db"
+	"short-link/pkg/middleware"
 )
 
 func main() {
@@ -25,7 +26,7 @@ func main() {
 
 	server := http.Server{
 		Addr:    ":7081",
-		Handler: router,
+		Handler: middleware.Logging(router),
 	}
 
 	fmt.Println("Server is listening on port 7081")
