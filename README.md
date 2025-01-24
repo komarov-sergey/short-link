@@ -1,3 +1,8 @@
+## run 
+```bash
+go run cmd/main.go
+```
+
 ## add dependencies:
 
 ```bash
