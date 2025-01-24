@@ -2,6 +2,7 @@ package link
 
 import (
 	"net/http"
+	"short-link/pkg/middleware"
 	"short-link/pkg/req"
 	"short-link/pkg/res"
 	"strconv"
@@ -23,7 +24,7 @@ func NewLinkHandler(router *http.ServeMux, deps LinkHandlerDeps) {
 	}
 
 	router.HandleFunc("POST /link", handler.Create())
-	router.HandleFunc("PATCH /link/{id}", handler.Update())
+	router.Handle("PATCH /link/{id}", middleware.IsAuthed(handler.Update()))
 	router.HandleFunc("DELETE /link/{id}", handler.Delete())
 	router.HandleFunc("GET /{hash}", handler.GoTo())
 }
